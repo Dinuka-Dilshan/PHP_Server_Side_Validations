@@ -5,12 +5,12 @@
 
 //htmlspecialchars method will convert any js injections to a html tag. so prevents injections
 
-$name = htmlspecialchars($_POST['name']);
+$toppings = htmlspecialchars($_POST['toppings']);
 $email = htmlspecialchars($_POST['email']);
-$message = htmlspecialchars($_POST['message']) ;
+$type = htmlspecialchars($_POST['type']) ;
 
-echo "Your name is:$name<br> 
+echo "Your name is:$toppings<br> 
       Your email is:$email<br>
-      Your message is: $message";
+      Your message is: $type";
 
 ?>
