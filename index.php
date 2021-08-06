@@ -4,16 +4,32 @@
 //it is gloabal and an associative array.
 
 //htmlspecialchars method will convert any js injections to a html tag. so prevents injections
+$toppings = "";
+$email = "";
+$type = "";
+
+$errors = array("email"=>"","type"=>"","toppings"=>"");
 
 if(!empty($_POST)){
   $toppings = htmlspecialchars($_POST['toppings']);
   $email = htmlspecialchars($_POST['email']);
   $type = htmlspecialchars($_POST['type']) ;
 
-  echo "Your name is:$toppings<br> 
-       Your email is:$email<br>
-        Your message is: $type";
+
+  if(empty($email)){
+    $errors["email"] = "email is empty!";
+  }
+
+  if(empty($type)){
+    $errors["type"] = "type is empty!";
+  }
+
+  if(empty($toppings)){
+    $errors["toppings"] = "toppings are empty!";
+  }
 }
+
+
 ?>
 
 
@@ -103,18 +119,18 @@ if(!empty($_POST)){
               <input type="email" id="form1" class="form-control" name="email" />
               <label class="form-label" for="form1">Email</label>
             </div>
-      
+            <p class="m-0 p-0"><?php  echo $errors["email"];?> </p>
             <div class="form-outline m-3">
               <input type="text" id="form1" class="form-control" name="type"/>
               <label class="form-label" for="form1">Pizza type</label>
             </div>
-      
+            <p class="m-0 p-0"><?php  echo $errors["type"];?> </p>
             <div class="form-outline m-3">
               <textarea class="form-control" id="form1" cols="30" rows="2" name="toppings"></textarea>
               <label class="form-label" for="form1">Toppins (Comma separated values)</label>
             </div>
-            
-              <button class="btn btn-primary mx-2"type="submit">Order a yummy pizza</button>
+            <p class="m-0 p-0"><?php  echo $errors["toppings"];?> </p>
+              <button class="btn btn-primary mx-2 mt-2"type="submit">Order a yummy pizza</button>
             
             
           </div>
